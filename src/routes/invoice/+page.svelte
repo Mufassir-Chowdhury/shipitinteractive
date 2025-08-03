@@ -1,15 +1,6 @@
 <script>
-    import { onMount } from "svelte";
 
-    onMount(() => {
-        function toggleWatermark() {
-          const isPaid = document.getElementById('paidToggle').checked;
-          const watermark = document.getElementById('watermark');
-          watermark.style.display = isPaid ? 'none' : 'block';
-        }
-        // Initialize watermark on load
-        toggleWatermark();
-    });
+    let isPaid = false;
   </script>
   
 <div class="body">
@@ -25,13 +16,13 @@
       <div class="status-toggle">
         <span>Paid:</span>
         <label class="toggle-switch">
-          <input type="checkbox" id="paidToggle" on:change={toggleWatermark()}>
+          <input type="checkbox" id="paidToggle" bind:checked={isPaid}>
           <span class="slider"></span>
         </label>
       </div>
     </div>
   
-    <div class="watermark" id="watermark">UNPAID</div>
+    <!-- <div class="watermark" id="watermark" hidden={isPaid}>UNPAID</div> -->
   
     <div class="invoice-header">
       <div class="company-details flex items-center gap-4">
@@ -43,7 +34,7 @@
       </div>
       <div class="invoice-title">
         <h1>INVOICE</h1>
-        <p><strong>Invoice #:</strong> 2024-001<br>
+        <p><strong>Invoice #:</strong> 2024-002<br>
            <strong>Date:</strong> November 5, 2024<br>
       </div>
     </div>
@@ -52,8 +43,8 @@
       <div class="invoice-grid">
         <div>
           <h3>Bill To:</h3>
-          <p><span class="text-xl font-bold">KishorKantha Readers Forum</span><br>
-             Sylhet City<br>
+          <p><span class="text-xl font-bold">Sylhet Periscope</span><br>
+            Bondor Bazar, Sylhet, Bangladesh<br>
         </div>
       </div>
     </div>
@@ -67,27 +58,27 @@
       </thead>
       <tbody>
         <tr>
-          <td>Domain (kkrfsylhet.org)</td>
-          <td class="text-right">৳800.00</td>
+          <td>Domain <br>(sylhetperiscope.news) - 1 Year/s (5/11/2024 - 4/11/2025)</td>
+          <td class="text-right">৳2,770.00</td>
         </tr>
         <tr>
-          <td>UI/UX Design</td>
-          <td class="text-right">৳4,000.00</td>
+          <td>Landing Page</td>
+          <td class="text-right">৳230.00</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Development and Testing</td>
           <td class="text-right">৳5,500.00</td>
         </tr>
         <tr>
-            <td>Deployment</td>
+            <td>Deployment and Hosting</td>
             <td class="text-right">৳700.00</td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   
     <div class="total-section">
       <!-- <p><strong>Subtotal:</strong> .00</p> -->
-      <p class="total-amount">Total: ৳11,000.00</p>
+      <p class="total-amount">Total: ৳3,000.00</p>
     </div>
   
     <!-- <div class="payment-terms">
